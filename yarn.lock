@@ -987,9 +987,9 @@
   integrity sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==
 
 "@types/node-jose@^1.1.8":
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/@types/node-jose/-/node-jose-1.1.8.tgz#26b7ae96e3309acb426ea5393ff5d6a0c1c38625"
-  integrity sha512-AFcArbplUaO+DqGVEPaiz/guw3uUA+dRHjaj26EEDF0DmTEPUd3dEdfdJMUx4kD65EAR3TnI1iHIcb31+Ko87Q==
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/@types/node-jose/-/node-jose-1.1.9.tgz#87a4bfab8337914349f30995021af5d976beabd0"
+  integrity sha512-IrMc1roAOw8VCzp0vkqXrrs/0Vvj9R9zHwrNlj4zgKJ/kmdk2t2M4iiKptTDIwHeUTyeDyaPYW7E1/AsG2xxzg==
   dependencies:
     "@types/node" "*"
 

@@ -1,6 +1,7 @@
 # Keycloak Mock
 
 [![License](https://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
+![Test](https://github.com/aktraore/keycloak-mock/actions/workflows/test.yml/badge.svg)
 
 A minimal mock for a Keycloak server to be used in unit tests.
 

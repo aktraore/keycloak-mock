@@ -45,6 +45,7 @@ Tested with Node.js 8.x, 10.x, 12.x, 13.x
         credentials: [{
             value: "mypassword",
         }],
+        roles: ['admin']
     });
 
     console.log(user.profile, user.credentials);

@@ -13,14 +13,14 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: '**/node_modules'
-        key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+        key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
     - name: Install dependencies
-      run: yarn install
+      run: npm install
     
     - name: Run Lint
-      run: yarn format:verify
+      run: npm run format:verify
     
     - name: Run tests
-      run: yarn test
+      run: npm test
   

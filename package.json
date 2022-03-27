@@ -1,5 +1,5 @@
 {
-  "name": "keycloak-mock",
+  "name": "@aktraore/keycloak-mock",
   "version": "1.0.0",
   "description": "Keycloak server mock for Node.js",
   "main": "dist/index.js",

@@ -1,8 +1,7 @@
 # Keycloak Mock
 
 [![License](https://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
-[![NPM version](https://badge.fury.io/js/keycloak-mock.svg)](http://badge.fury.io/js/keycloak-mock)
-![test](https://github.com/SectorLabs/keycloak-mock/workflows/test/badge.svg)
+![Test](https://github.com/aktraore/keycloak-mock/actions/workflows/test.yml/badge.svg)
 
 A minimal mock for a Keycloak server to be used in unit tests.
 
@@ -11,7 +10,7 @@ This mock is not complete and it definitely doesn't match Keycloak completely. I
 ## About
 This does not launch an actual HTTP server. It uses [`nock`](https://github.com/nock/nock) to patch Node.js HTTP client to intercept requests.
 
-Tested with Node.js 8.x, 10.x, 12.x, 13.x
+Tested with Node.js 14.x
 
 ### What works
 * `GET /[realm]/protocol/openid-connect/certs`
@@ -25,7 +24,7 @@ Tested with Node.js 8.x, 10.x, 12.x, 13.x
 
 ## Usage
 ### Basic
-    import * as KeycloakMock from "keycloak-node-mock";
+    import * as KeycloakMock from "@aktraore/keycloak-mock";
 
     const keycloak = await KeycloakMock.createMockInstance({
         authServerURL: "https://myserver.com/auth",

@@ -4,7 +4,7 @@
   "description": "Keycloak server mock for Node.js",
   "main": "dist/index.js",
   "repository": "https://github.com/aktraore/keycloak-mock",
-  "author": "aktraore (forked from CDH-Studio/keycloak-connect",
+  "author": "aktraore",
   "license": "MIT",
   "engines": {
     "node": ">=8.0.0"
@@ -14,9 +14,12 @@
     "test": "jest -i tests/",
     "format": "prettier --write '**/*.ts'",
     "format:verify": "prettier --check '**/*.ts'",
-    "prepack": "npm run format && npm run build"
+    "presemantic-release": "npm run format && npm run build",
+    "semantic-release": "semantic-release"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
     "@types/jest": "^27.4.0",
     "@types/jsonwebtoken": "^8.5.4",
     "@types/node-jose": "^1.1.8",
@@ -26,6 +29,7 @@
     "jest": "^27.0.6",
     "prettier": "^2.3.2",
     "qs": "^6.10.1",
+    "semantic-release": "^19.0.2",
     "ts-jest": "^27.0.4",
     "typescript": "^4.3.5"
   },

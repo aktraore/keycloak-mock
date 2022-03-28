@@ -1,41 +1,41 @@
-import url from "url";
-import qs from "qs";
+import url from 'url';
+import qs from 'qs';
 
-import { ViewFn } from "../types";
+import { ViewFn } from '../types';
 
 const listUsers: ViewFn = (instance, request) => {
-  const { user: requestUser } = request;
-  if (!requestUser) {
-    return [403, "Access denied"];
-  }
-
-  const filterParams = qs.parse(url.parse(request.path).query || "");
-  const matchingUsers = instance.database.filterUsers((user) => {
-    if (filterParams.username) {
-      return user.profile.username === filterParams.username;
+    const { user: requestUser } = request;
+    if (!requestUser) {
+        return [403, 'Access denied'];
     }
 
-    return true;
-  });
+    const filterParams = qs.parse(url.parse(request.path).query || '');
+    const matchingUsers = instance.database.filterUsers((user) => {
+        if (filterParams.username) {
+            return user.profile.username === filterParams.username;
+        }
 
-  return [
-    200,
-    matchingUsers.map((user) => ({
-      ...user.profile,
-      // TODO: make these configurable
-      disableableCredentialTypes: ["password"],
-      requiredActions: [],
-      federatedIdentities: [],
-      notBefore: 0,
-      access: {
-        manageGroupMembership: true,
-        view: true,
-        mapRoles: true,
-        impersonate: false,
-        manage: true,
-      },
-    })),
-  ];
+        return true;
+    });
+
+    return [
+        200,
+        matchingUsers.map((user) => ({
+            ...user.profile,
+            // TODO: make these configurable
+            disableableCredentialTypes: ['password'],
+            requiredActions: [],
+            federatedIdentities: [],
+            notBefore: 0,
+            access: {
+                manageGroupMembership: true,
+                view: true,
+                mapRoles: true,
+                impersonate: false,
+                manage: true,
+            },
+        })),
+    ];
 };
 
 export default listUsers;

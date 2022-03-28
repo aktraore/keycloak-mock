@@ -1,31 +1,25 @@
-import { ClientRequest } from "http";
-import { ReplyFnResult as NockClientResponse } from "nock";
+import { ClientRequest } from 'http';
+import { ReplyFnResult as NockClientResponse } from 'nock';
 
-import { MockInstance } from "./instance";
-import { MockUser } from "./database";
+import { MockInstance } from './instance';
+import { MockUser } from './database';
 
 export type NockClientRequest = ClientRequest & {
-  user?: MockUser | null;
-  headers: Record<string, string>;
+    user?: MockUser | null;
+    headers: Record<string, string>;
 };
 
-export type ViewFn = (
-  instance: MockInstance,
-  request: NockClientRequest
-) => NockClientResponse;
+export type ViewFn = (instance: MockInstance, request: NockClientRequest) => NockClientResponse;
 
 export type DeleteViewFn = (
-  instance: MockInstance,
-  request: NockClientRequest
+    instance: MockInstance,
+    request: NockClientRequest,
 ) => NockClientResponse;
 
 export type PostViewFn = (
-  instance: MockInstance,
-  request: NockClientRequest,
-  body: Record<string, any>
+    instance: MockInstance,
+    request: NockClientRequest,
+    body: Record<string, any>,
 ) => NockClientResponse;
 
-export type MiddlewareFn = (
-  instance: MockInstance,
-  request: NockClientRequest
-) => Promise<void>;
+export type MiddlewareFn = (instance: MockInstance, request: NockClientRequest) => Promise<void>;

@@ -1,51 +1,51 @@
-import { v4 as uuidv4 } from "uuid";
-import jwt, { SignOptions } from "jsonwebtoken";
+import { v4 as uuidv4 } from 'uuid';
+import jwt, { SignOptions } from 'jsonwebtoken';
 
-import { JWK } from "node-jose";
+import { JWK } from 'node-jose';
 
-import { MockUser } from "./database";
+import { MockUser } from './database';
 
 export interface CreateTokenOptions {
-  user: MockUser;
-  expiresIn: number;
-  key: JWK.Key;
-  realm: string;
-  clientID: string;
-  authServerURL: string;
-  audience?: string | string[];
-  roles?: string[];
+    user: MockUser;
+    expiresIn: number;
+    key: JWK.Key;
+    realm: string;
+    clientID: string;
+    authServerURL: string;
+    audience?: string | string[];
+    roles?: string[];
 }
 
 const createBearerToken = (options: CreateTokenOptions): string => {
-  const timestamp = Math.floor(Date.now() / 1000);
-  const expiresAt = timestamp + options.expiresIn;
+    const timestamp = Math.floor(Date.now() / 1000);
+    const expiresAt = timestamp + options.expiresIn;
 
-  const sign_options = {
-    algorithm: "RS256",
-    header: {
-      typ: "JWT",
-      kid: options.key.kid,
-    },
-    ...(options.audience && { audience: options.audience }),
-  } as SignOptions;
+    const sign_options = {
+        algorithm: 'RS256',
+        header: {
+            typ: 'JWT',
+            kid: options.key.kid,
+        },
+        ...(options.audience && { audience: options.audience }),
+    } as SignOptions;
 
-  return jwt.sign(
-    {
-      iss: `${options.authServerURL}/realms/${options.realm}`,
-      iat: expiresAt,
-      exp: expiresAt,
-      nbf: 0,
-      typ: "Bearer",
-      sub: options.user.profile.id,
-      azp: options.clientID,
-      session_state: uuidv4(),
-      ...(options.roles && {
-        resource_access: { [options.clientID]: { roles: options.roles } },
-      }),
-    },
-    options.key.toPEM(true),
-    sign_options
-  );
+    return jwt.sign(
+        {
+            iss: `${options.authServerURL}/realms/${options.realm}`,
+            iat: expiresAt,
+            exp: expiresAt,
+            nbf: 0,
+            typ: 'Bearer',
+            sub: options.user.profile.id,
+            azp: options.clientID,
+            session_state: uuidv4(),
+            ...(options.roles && {
+                resource_access: { [options.clientID]: { roles: options.roles } },
+            }),
+        },
+        options.key.toPEM(true),
+        sign_options,
+    );
 };
 
 export default createBearerToken;

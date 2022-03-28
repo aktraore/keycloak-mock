@@ -1,9 +1,9 @@
 export class DuplicateUserError extends Error {
-  constructor(message: string) {
-    super(message);
+    constructor(message: string) {
+        super(message);
 
-    Object.setPrototypeOf(this, DuplicateUserError.prototype);
+        Object.setPrototypeOf(this, DuplicateUserError.prototype);
 
-    this.name = "DuplicateUserError";
-  }
+        this.name = 'DuplicateUserError';
+    }
 }

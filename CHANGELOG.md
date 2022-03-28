@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/aktraore/keycloak-mock/compare/v1.0.3...v1.1.0) (2022-03-28)
+
+
+### Features
+
+* bump version to 1.0.3 ([91f4cd8](https://github.com/aktraore/keycloak-mock/commit/91f4cd8cf9337928ad77b0e4beb4d81fd4b68b80))
+
 # 1.0.0 (2022-03-28)
 
 

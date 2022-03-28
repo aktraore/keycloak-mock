@@ -1,6 +1,7 @@
 node_modules/
 
 tests/
+lib/
 
 jest.config.js
 tsconfig.js

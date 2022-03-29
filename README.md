@@ -21,6 +21,7 @@ Tested with Node.js 14.x
 * `GET /admin/realms/[realm]/users/[userid]`
 * `DELETE /admin/realms/[realm]/users/[userid]`
 * `POST /admin/realms/[realm]/users`
+* `GET /realms/[realm]/.well-known/uma2-configuration`
 
 ## Usage
 ### Basic
@@ -95,6 +96,9 @@ Tested with Node.js 14.x
            return [500, ""];
        },
        createUserView: (instance, request, body) => {
+           return [500, ""];
+       },
+       getUmaConfiguration: (instance, request, body) => {
            return [500, ""];
        },
     });

@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/aktraore/keycloak-mock/compare/v1.1.0...v1.1.1) (2022-03-29)
+
+
+### Bug Fixes
+
+* add nvmrc for node 16 ([a9f39a2](https://github.com/aktraore/keycloak-mock/commit/a9f39a28715071b18ddae09399090a0609bf1fae))
+
 # [1.1.0](https://github.com/aktraore/keycloak-mock/compare/v1.0.3...v1.1.0) (2022-03-28)
 
 

@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from 'uuid';
-import isNil from 'lodash/isNil';
 
 import { DuplicateUserError } from './error';
 
@@ -42,6 +41,10 @@ export interface MockUserProfile {
 export interface MockUser {
     profile: MockUserProfile;
     credentials: { type: MockUserCredentialType; value: string }[];
+}
+
+function isNil(value: any): value is null | undefined {
+    return value == null;
 }
 
 class MockDatabase {

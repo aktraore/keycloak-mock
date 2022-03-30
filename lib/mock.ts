@@ -13,6 +13,7 @@ import {
     createUser,
     listUsers,
     getUmaConfiguration,
+    getOpenIdConfiguration,
 } from './views';
 
 let __activeMocks__: Map<string, Mock> = new Map<string, Mock>();
@@ -29,6 +30,7 @@ export interface MockOptions {
     getUserInfoView?: ViewFn;
     listUsersView?: ViewFn;
     getUmaConfiguration?: ViewFn;
+    getOpenIdConfiguration?: ViewFn;
     createTokenView?: PostViewFn;
     createUserView?: PostViewFn;
 }
@@ -116,6 +118,16 @@ const activateMock = (instance: MockInstance, options?: MockOptions): Mock => {
             }
 
             return getUmaConfiguration(instance, this.req);
+        })
+        .get(`/realms/${realm}/.well-known/openid-configuration`)
+        .reply(async function () {
+            await decodeTokenAndAttachUser(instance, this.req);
+
+            if (options && options.getOpenIdConfiguration) {
+                return options.getOpenIdConfiguration(instance, this.req);
+            }
+
+            return getOpenIdConfiguration(instance, this.req);
         })
         .post(`/realms/${realm}/protocol/openid-connect/token`)
         .reply(async function (uri, body) {

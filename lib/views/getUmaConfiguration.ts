@@ -1,10 +1,6 @@
 import { ViewFn } from '../types';
 
 const getUmaConfiguration: ViewFn = (instance, request) => {
-    const { user: requestUser } = request;
-    if (!requestUser) {
-        return [403, 'Access denied'];
-    }
 
     return [
         200,

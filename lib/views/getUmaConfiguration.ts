@@ -5,14 +5,14 @@ const getUmaConfiguration: ViewFn = (instance, request) => {
     return [
         200,
         {
-            issuer: `http://localhost:8180/auth/realms/${instance.params.realm}`,
-            authorization_endpoint: `http://localhost:8180/auth/realms/${instance.params.realm}/protocol/openid-connect/auth`,
-            token_endpoint: `http://localhost:8180/auth/realms/${instance.params.realm}/protocol/openid-connect/token`,
-            introspection_endpoint: `http://localhost:8180/auth/realms/${instance.params.realm}/protocol/openid-connect/token/introspect`,
-            end_session_endpoint: `http://localhost:8180/auth/realms/${instance.params.realm}/protocol/openid-connect/logout`,
+            issuer: `${instance.params.authServerURL}/realms/${instance.params.realm}`,
+            authorization_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/auth`,
+            token_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/token`,
+            introspection_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/token/introspect`,
+            end_session_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/logout`,
             frontchannel_logout_session_supported: true,
             frontchannel_logout_supported: true,
-            jwks_uri: `http://localhost:8180/auth/realms/${instance.params.realm}/protocol/openid-connect/certs`,
+            jwks_uri: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/certs`,
             grant_types_supported: [
                 `authorization_code`,
                 `implicit`,
@@ -41,7 +41,7 @@ const getUmaConfiguration: ViewFn = (instance, request) => {
                 `form_post.jwt`,
                 `jwt`,
             ],
-            registration_endpoint: `http://localhost:8180/auth/realms/${instance.params.realm}/clients-registrations/openid-connect`,
+            registration_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/clients-registrations/openid-connect`,
             token_endpoint_auth_methods_supported: [
                 `private_key_jwt`,
                 `client_secret_basic`,
@@ -74,9 +74,9 @@ const getUmaConfiguration: ViewFn = (instance, request) => {
                 `roles`,
                 `email`,
             ],
-            resource_registration_endpoint: `http://localhost:8180/auth/realms/${instance.params.realm}/authz/protection/resource_set`,
-            permission_endpoint: `http://localhost:8180/auth/realms/${instance.params.realm}/authz/protection/permission`,
-            policy_endpoint: `http://localhost:8180/auth/realms/${instance.params.realm}/authz/protection/uma-policy`,
+            resource_registration_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}z/protection/resource_set`,
+            permission_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}z/protection/permission`,
+            policy_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}z/protection/uma-policy`,
         },
     ];
 };

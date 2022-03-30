@@ -8,23 +8,28 @@ A minimal mock for a Keycloak server to be used in unit tests.
 This mock is not complete and it definitely doesn't match Keycloak completely. Improvements are welcome.
 
 ## About
+
 This does not launch an actual HTTP server. It uses [`nock`](https://github.com/nock/nock) to patch Node.js HTTP client to intercept requests.
 
 Tested with Node.js 14.x
 
 ### What works
-* `GET /[realm]/protocol/openid-connect/certs`
-* `GET /[realm]/protocol/openid-connect/userinfo`
-* `GET /admin/realms/[realm]/users`
-* `GET /admin/realms/[realm]/users?username=myusername`
-* `POST /[realm]/protocol/openid-connect/token`
-* `GET /admin/realms/[realm]/users/[userid]`
-* `DELETE /admin/realms/[realm]/users/[userid]`
-* `POST /admin/realms/[realm]/users`
-* `GET /realms/[realm]/.well-known/uma2-configuration`
+
+-   `GET /[realm]/protocol/openid-connect/certs`
+-   `GET /[realm]/protocol/openid-connect/userinfo`
+-   `GET /admin/realms/[realm]/users`
+-   `GET /admin/realms/[realm]/users?username=myusername`
+-   `POST /[realm]/protocol/openid-connect/token`
+-   `GET /admin/realms/[realm]/users/[userid]`
+-   `DELETE /admin/realms/[realm]/users/[userid]`
+-   `POST /admin/realms/[realm]/users`
+-   `GET /realms/[realm]/.well-known/uma2-configuration`
+-   `GET /realms/[realm]/.well-known/openid-configuration`
 
 ## Usage
+
 ### Basic
+
     import * as KeycloakMock from "@aktraore/keycloak-mock";
 
     const keycloak = await KeycloakMock.createMockInstance({

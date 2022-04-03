@@ -21,7 +21,25 @@ type DecodedJWTToken = {
  */
 const decodeTokenAndAttachUser: MiddlewareFn = async (instance, request) => {
     const rawToken = (request.headers.authorization || '').split(' ')[1];
+
     if (!rawToken) {
+        return;
+    }
+
+    try {
+        const serviceUser = instance.database.findServiceUser();
+        if (
+            serviceUser &&
+            'Basic ' +
+                Buffer.from(
+                    `${serviceUser.profile.username}:${serviceUser.credentials[0].value}`,
+                ).toString('base64') ==
+                request.headers.authorization
+        ) {
+            request.user = serviceUser;
+            return;
+        }
+    } catch (error) {
         return;
     }
 

@@ -5,8 +5,9 @@ import createBearerToken from '../createBearerToken';
 import { MockUser, MockUserCredentialType } from '../database';
 
 const createToken: PostViewFn = (instance, request, body) => {
-    const { grant_type: grantType, client_id: clientID, scope } = body;
+    const { grant_type: grantType, client_id, clientId, scope } = body;
 
+    const clientID = client_id || clientId;
     if (clientID && instance.params.clientID !== clientID) {
         return [400, 'Bad request'];
     }
@@ -21,8 +22,8 @@ const createToken: PostViewFn = (instance, request, body) => {
 
         user = instance.database.matchForPasswordGrant(username, password);
     } else if (grantType === 'client_credentials') {
-        const { username, password, client_secret: clientSecret } = body;
-
+        const { username, password, client_secret, clientSecret } = body;
+        const clientSECRET = client_secret || clientSecret;
         if (!clientID && !username) {
             return [400, 'Bad request'];
         }

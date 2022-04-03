@@ -5,21 +5,15 @@ const getOpenIdConfiguration: ViewFn = (instance, request) => {
         200,
         {
             issuer: `${instance.params.authServerURL}/realms/${instance.params.realm}`,
-            authorization_endpoint:
-                `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/auth`,
-            token_endpoint:
-                `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/token`,
-            introspection_endpoint:
-                `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/token/introspect`,
-            userinfo_endpoint:
-                `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/userinfo`,
-            end_session_endpoint:
-                `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/logout`,
+            authorization_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/auth`,
+            token_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/token`,
+            introspection_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/token/introspect`,
+            userinfo_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/userinfo`,
+            end_session_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/logout`,
             frontchannel_logout_session_supported: true,
             frontchannel_logout_supported: true,
             jwks_uri: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/certs`,
-            check_session_iframe:
-                `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/login-status-iframe.html`,
+            check_session_iframe: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/login-status-iframe.html`,
             grant_types_supported: [
                 `authorization_code`,
                 `implicit`,
@@ -111,8 +105,7 @@ const getOpenIdConfiguration: ViewFn = (instance, request) => {
                 `form_post.jwt`,
                 `jwt`,
             ],
-            registration_endpoint:
-                `${instance.params.authServerURL}/realms/${instance.params.realm}/clients-registrations/openid-connect`,
+            registration_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/clients-registrations/openid-connect`,
             token_endpoint_auth_methods_supported: [
                 `private_key_jwt`,
                 `client_secret_basic`,
@@ -208,8 +201,7 @@ const getOpenIdConfiguration: ViewFn = (instance, request) => {
             require_request_uri_registration: true,
             code_challenge_methods_supported: [`plain`, `S256`],
             tls_client_certificate_bound_access_tokens: true,
-            revocation_endpoint:
-                `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/revoke`,
+            revocation_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/revoke`,
             revocation_endpoint_auth_methods_supported: [
                 `private_key_jwt`,
                 `client_secret_basic`,
@@ -233,11 +225,9 @@ const getOpenIdConfiguration: ViewFn = (instance, request) => {
             ],
             backchannel_logout_supported: true,
             backchannel_logout_session_supported: true,
-            device_authorization_endpoint:
-                `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/auth/device`,
+            device_authorization_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/auth/device`,
             backchannel_token_delivery_modes_supported: [`poll`, `ping`],
-            backchannel_authentication_endpoint:
-                `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/ext/ciba/auth`,
+            backchannel_authentication_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/ext/ciba/auth`,
             backchannel_authentication_request_signing_alg_values_supported: [
                 `PS384`,
                 `ES384`,
@@ -250,25 +240,16 @@ const getOpenIdConfiguration: ViewFn = (instance, request) => {
                 `RS512`,
             ],
             require_pushed_authorization_requests: false,
-            pushed_authorization_request_endpoint:
-                `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/ext/par/request`,
+            pushed_authorization_request_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/ext/par/request`,
             mtls_endpoint_aliases: {
-                token_endpoint:
-                    `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/token`,
-                revocation_endpoint:
-                    `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/revoke`,
-                introspection_endpoint:
-                    `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/token/introspect`,
-                device_authorization_endpoint:
-                    `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/auth/device`,
-                registration_endpoint:
-                    `${instance.params.authServerURL}/realms/${instance.params.realm}/clients-registrations/openid-connect`,
-                userinfo_endpoint:
-                    `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/userinfo`,
-                pushed_authorization_request_endpoint:
-                    `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/ext/par/request`,
-                backchannel_authentication_endpoint:
-                    `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/ext/ciba/auth`,
+                token_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/token`,
+                revocation_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/revoke`,
+                introspection_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/token/introspect`,
+                device_authorization_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/auth/device`,
+                registration_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/clients-registrations/openid-connect`,
+                userinfo_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/userinfo`,
+                pushed_authorization_request_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/ext/par/request`,
+                backchannel_authentication_endpoint: `${instance.params.authServerURL}/realms/${instance.params.realm}/protocol/openid-connect/ext/ciba/auth`,
             },
         },
     ];

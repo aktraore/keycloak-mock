@@ -1,7 +1,6 @@
 import { ViewFn } from '../types';
 
 const getUmaConfiguration: ViewFn = (instance, request) => {
-
     return [
         200,
         {

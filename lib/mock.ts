@@ -144,7 +144,7 @@ const activateMock = (instance: MockInstance, options?: MockOptions): Mock => {
         .post(`/realms/${realm}/protocol/openid-connect/token/introspect`)
         .reply(async function (uri, body) {
             const decodedBody = decodeBody(this.req, body);
-            
+
             await decodeTokenAndAttachUser(instance, this.req);
 
             if (options && options.validateToken) {

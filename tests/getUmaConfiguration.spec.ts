@@ -14,7 +14,6 @@ describe('getUmaConfiguration', () => {
         const response = await axios.get(url, { validateStatus: () => true });
         expect(response.status).toBe(200);
         expect(response.data).toMatchSnapshot();
-
     });
 
     it('works with token', async () => {

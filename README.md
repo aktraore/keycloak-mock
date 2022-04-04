@@ -20,6 +20,7 @@ Tested with Node.js 14.x
 -   `GET /admin/realms/[realm]/users`
 -   `GET /admin/realms/[realm]/users?username=myusername`
 -   `POST /[realm]/protocol/openid-connect/token`
+-   `POST /[realm]/protocol/openid-connect/token/introspect`
 -   `GET /admin/realms/[realm]/users/[userid]`
 -   `DELETE /admin/realms/[realm]/users/[userid]`
 -   `POST /admin/realms/[realm]/users`

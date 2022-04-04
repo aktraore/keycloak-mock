@@ -13,6 +13,8 @@ import {
     createUser,
     listUsers,
     getUmaConfiguration,
+    getOpenIdConfiguration,
+    validateToken,
 } from './views';
 
 let __activeMocks__: Map<string, Mock> = new Map<string, Mock>();
@@ -29,8 +31,10 @@ export interface MockOptions {
     getUserInfoView?: ViewFn;
     listUsersView?: ViewFn;
     getUmaConfiguration?: ViewFn;
+    getOpenIdConfiguration?: ViewFn;
     createTokenView?: PostViewFn;
     createUserView?: PostViewFn;
+    validateToken?: PostViewFn;
 }
 
 const decodeBody = (request: NockClientRequest, requestBody: unknown): {} => {
@@ -117,6 +121,16 @@ const activateMock = (instance: MockInstance, options?: MockOptions): Mock => {
 
             return getUmaConfiguration(instance, this.req);
         })
+        .get(`/realms/${realm}/.well-known/openid-configuration`)
+        .reply(async function () {
+            await decodeTokenAndAttachUser(instance, this.req);
+
+            if (options && options.getOpenIdConfiguration) {
+                return options.getOpenIdConfiguration(instance, this.req);
+            }
+
+            return getOpenIdConfiguration(instance, this.req);
+        })
         .post(`/realms/${realm}/protocol/openid-connect/token`)
         .reply(async function (uri, body) {
             const decodedBody = decodeBody(this.req, body);
@@ -126,6 +140,18 @@ const activateMock = (instance: MockInstance, options?: MockOptions): Mock => {
             }
 
             return createToken(instance, this.req, decodedBody);
+        })
+        .post(`/realms/${realm}/protocol/openid-connect/token/introspect`)
+        .reply(async function (uri, body) {
+            const decodedBody = decodeBody(this.req, body);
+
+            await decodeTokenAndAttachUser(instance, this.req);
+
+            if (options && options.validateToken) {
+                return options.validateToken(instance, this.req, decodedBody);
+            }
+
+            return validateToken(instance, this.req, decodedBody);
         })
         .post(`/admin/realms/${realm}/users`)
         .reply(async function (uri, body) {

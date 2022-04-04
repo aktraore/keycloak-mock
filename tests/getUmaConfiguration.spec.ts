@@ -7,12 +7,13 @@ describe('getUmaConfiguration', () => {
     beforeAll(setupBefore);
     afterAll(teardownAfter);
 
-    it('rejects with 403 without token', async () => {
+    it('works without token', async () => {
         const kmock = getMockInstance();
         const url = kmock.createURL(`/realms/${kmock.params.realm}/.well-known/uma2-configuration`);
 
         const response = await axios.get(url, { validateStatus: () => true });
-        expect(response.status).toBe(403);
+        expect(response.status).toBe(200);
+        expect(response.data).toMatchSnapshot();
     });
 
     it('works with token', async () => {
@@ -26,6 +27,7 @@ describe('getUmaConfiguration', () => {
         const response = await axios.get(url, {
             headers: { authorization: `Bearer ${token}` },
         });
+        expect(response.status).toBe(200);
         expect(response.data).toMatchSnapshot();
     });
 });

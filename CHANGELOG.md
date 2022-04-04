@@ -1,3 +1,19 @@
+# [1.2.0](https://github.com/aktraore/keycloak-mock/compare/v1.1.1...v1.2.0) (2022-04-04)
+
+
+### Bug Fixes
+
+* adapt code to support different variable naming for clientId and clientsecret ([ee12b14](https://github.com/aktraore/keycloak-mock/commit/ee12b1407194ba45b6afe04939d688797ff095b5))
+* fix createToken ([14d19c5](https://github.com/aktraore/keycloak-mock/commit/14d19c579422ee1dda3ab3366fff9f07acf35c26))
+* remove auth check from getUmaConfiguration mock function ([64bc2e8](https://github.com/aktraore/keycloak-mock/commit/64bc2e8cd3719ce6db1ffd5c21647b3d2e7707e7))
+* use correct url for getUmaConfiguration ([f267271](https://github.com/aktraore/keycloak-mock/commit/f2672710b4482bef1cb0e56ac12cd348026f101d))
+
+
+### Features
+
+* add getOpenIdConfiguration mock ([dbd2be1](https://github.com/aktraore/keycloak-mock/commit/dbd2be169ee02baea8466d03598eff8344a72a54))
+* add validateToken mock method ([6855b4f](https://github.com/aktraore/keycloak-mock/commit/6855b4f0a318e4e18218ec938b2a550dd68992e3))
+
 ## [1.1.1](https://github.com/aktraore/keycloak-mock/compare/v1.1.0...v1.1.1) (2022-03-29)
 
 

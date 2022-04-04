@@ -50,7 +50,7 @@ const decodeTokenAndAttachUser: MiddlewareFn = async (instance, request) => {
         return;
     }
 
-    const rawKey = instance.store.get(decodedToken.header.kid);
+    const rawKey = instance.store.get(decodedToken?.header?.kid);
     if (!rawKey) {
         return;
     }

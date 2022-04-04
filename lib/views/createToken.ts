@@ -28,7 +28,7 @@ const createToken: PostViewFn = (instance, request, body) => {
             return [400, 'Bad request'];
         }
 
-        if (!clientSecret && !password) {
+        if (!clientSECRET && !password) {
             return [400, 'Bad request'];
         }
 
@@ -36,7 +36,7 @@ const createToken: PostViewFn = (instance, request, body) => {
         // username and password, hence the fallback
         user = instance.database.matchForClientGrant(
             clientID || username,
-            clientSecret || password,
+            clientSECRET || password,
         );
     } else {
         return [400, 'Bad request'];

@@ -22,4 +22,10 @@ export type PostViewFn = (
     body: Record<string, any>,
 ) => NockClientResponse;
 
+export type PutViewFn = (
+    instance: MockInstance,
+    request: NockClientRequest,
+    body: Record<string, any>,
+) => NockClientResponse;
+
 export type MiddlewareFn = (instance: MockInstance, request: NockClientRequest) => Promise<void>;

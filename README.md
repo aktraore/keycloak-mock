@@ -24,6 +24,7 @@ Tested with Node.js 14.x
 -   `GET /admin/realms/[realm]/users/[userid]`
 -   `DELETE /admin/realms/[realm]/users/[userid]`
 -   `POST /admin/realms/[realm]/users`
+-   `PUT /admin/realms/[realm]/users`
 -   `GET /realms/[realm]/.well-known/uma2-configuration`
 -   `GET /realms/[realm]/.well-known/openid-configuration`
 
@@ -87,6 +88,9 @@ Tested with Node.js 14.x
        getUser: (instance, request) => {
            // might be null if not authorized
            console.log(request.user);
+           return [500, ""];
+       },
+       updateUser: (instance, request) => {
            return [500, ""];
        },
        deleteUser: (instance, request) => {

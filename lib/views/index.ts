@@ -8,3 +8,4 @@ export { default as createUser } from './createUser';
 export { default as getUmaConfiguration } from './getUmaConfiguration';
 export { default as getOpenIdConfiguration } from './getOpenIdConfiguration';
 export { default as validateToken } from './validateToken';
+export { default as updateUser } from './updateUser';

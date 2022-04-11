@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { DuplicateUserError } from './error';
+import { DuplicateUserError, UserNotFoundError } from './error';
 
 export type MockUserProfileAttributes = {
     [key: string]: [string];
@@ -13,6 +13,20 @@ export enum MockUserCredentialType {
 
 export interface CreateMockUserOptions {
     id?: string;
+    createdTimestamp?: number;
+    username?: string;
+    enabled?: boolean;
+    totp?: boolean;
+    emailVerified?: boolean;
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    attributes?: MockUserProfileAttributes;
+    credentials?: { type?: MockUserCredentialType; value: string }[];
+}
+
+export interface UpdateMockUserOptions {
+    id: string;
     createdTimestamp?: number;
     username?: string;
     enabled?: boolean;
@@ -244,6 +258,42 @@ class MockDatabase {
                 },
             ],
         });
+    }
+
+    /**
+     * Updates a user and returns the update profile of the user
+     *
+     */
+    updateUser(options?: UpdateMockUserOptions): MockUser {
+        const finalizedOptions = options;
+
+        const id = finalizedOptions?.id;
+        const email = finalizedOptions?.email;
+
+        if (!id) {
+            throw new UserNotFoundError(`A user with id ${id} doesn't exist`);
+        }
+        let indexInUser = 0;
+
+        const userToUpdate = this.users.find((storedUser, index) => {
+            indexInUser = 0;
+            return storedUser.profile.id === id;
+        });
+
+        if (!userToUpdate) {
+            throw new UserNotFoundError(`A user with id ${id} doesn't exist`);
+        }
+
+        const updatedUser: MockUser = {
+            profile: {
+                ...userToUpdate.profile,
+                ...options,
+            },
+            credentials: userToUpdate.credentials,
+        };
+
+        this.users[indexInUser] = updatedUser;
+        return updatedUser;
     }
 }
 

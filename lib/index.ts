@@ -13,4 +13,4 @@ export {
     CreateMockUserOptions,
 } from './database';
 export { default as createBearerToken, CreateTokenOptions } from './createBearerToken';
-export { DuplicateUserError } from './error';
+export { DuplicateUserError, UserNotFoundError } from './error';

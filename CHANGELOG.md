@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/aktraore/keycloak-mock/compare/v1.2.0...v1.3.0) (2022-04-11)
+
+
+### Features
+
+* add update user mock ([6ca45c4](https://github.com/aktraore/keycloak-mock/commit/6ca45c417ad6e607571c25f792b109f530df9ef4))
+
 # [1.2.0](https://github.com/aktraore/keycloak-mock/compare/v1.1.1...v1.2.0) (2022-04-04)
 
 
